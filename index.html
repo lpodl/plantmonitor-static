@@ -7,37 +7,68 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="dashboard-wrapper">
         <header>
             <h1>Plant Monitoring Dashboard</h1>
+            <div class="btn-group">
+                <button class="btn" onclick="showSection('plots')">Plots</button>
+                <button class="btn" onclick="showSection('photos')">Photos</button>
+            </div>
         </header>
 
         <main>
-            <div class="grid">
-                <div class="card">
+            <div id="plotsSection" class="charts-container active">
+                <div class="chart-card">
                     <h2>Temperature</h2>
-                    <div class="card-content">
-                        <img src="img/temp.png" alt="Temperature Plot">
-                    </div>
+                    <img src="img/temp.png" alt="Temperature Plot">
                 </div>
-
-                <div class="card">
+                <div class="chart-card">
                     <h2>Humidity</h2>
-                    <div class="card-content">
-                        <img src="img/humidity.png" alt="Humidity Plot">
-                    </div>
+                    <img src="img/humidity.png" alt="Humidity Plot">
                 </div>
             </div>
 
-            <div class="photos-card">
-                <h2>Recent Photos</h2>
+            <div id="photosSection" class="photos-container">
                 <div class="photos-grid">
-                    <div class="photo"><img src="img/chili1.png" alt="Chili Plant 1"></div>
-                    <div class="photo"><img src="img/chili2.png" alt="Chili Plant 2"></div>
-                    <div class="photo"><img src="img/chili3.png" alt="Chili Plant 3"></div>
+                    <div class="photo-card">
+                        <img src="img/chili1.png" alt="Chili Plant 1">
+                        <div class="photo-date">2024-03-15</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="img/chili2.png" alt="Chili Plant 2">
+                        <div class="photo-date">2024-03-14</div>
+                    </div>
+                    <div class="photo-card">
+                        <img src="img/chili3.png" alt="Chili Plant 3">
+                        <div class="photo-date">2024-03-13</div>
+                    </div>
                 </div>
             </div>
         </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-button active" onclick="showSection('plots')">Plots</button>
+            <button class="nav-button" onclick="showSection('photos')">Photos</button>
+        </nav>
     </div>
+
+    <script>
+        function showSection(section) {
+            // Hide all sections
+            document.querySelector('.charts-container').classList.remove('active');
+            document.querySelector('.photos-container').classList.remove('active');
+            
+            // Show selected section
+            if (section === 'plots') {
+                document.querySelector('.charts-container').classList.add('active');
+                document.querySelectorAll('.nav-button')[0].classList.add('active');
+                document.querySelectorAll('.nav-button')[1].classList.remove('active');
+            } else {
+                document.querySelector('.photos-container').classList.add('active');
+                document.querySelectorAll('.nav-button')[0].classList.remove('active');
+                document.querySelectorAll('.nav-button')[1].classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>

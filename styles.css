@@ -1,118 +1,168 @@
-* {
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    height: 100%; /* Make the body take the full viewport height */
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    background-color: #ffffff;
     color: #333333;
-    line-height: 1.2;
+    font-family: 'Montserrat', sans-serif;
 }
 
-body {
+.dashboard-wrapper {
     display: flex;
     flex-direction: column;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100vh; /* Ensure the container takes full viewport height */
+    height: 100dvh;
 }
 
 header {
-    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
     background-color: #ffffff;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 200;
-}
-
 main {
-    flex-grow: 1; /* Allow main content to fill the remaining space */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 16px;
-    overflow-y: auto; /* Add overflow in case content grows larger than expected */
+    overflow-y: auto;
 }
 
-.grid {
+.charts-container {
     display: flex;
-    gap: 20px;
     justify-content: space-between;
-    flex-grow: 1; /* Ensures the grid will grow to take the available space */
+    padding: 1rem;
+    gap: 1rem;
 }
 
-.card {
-    background-color: white;
+.chart-card {
+    flex: 1;
+    background-color: #ffffff;
     border-radius: 10px;
-    flex-grow: 1; /* Cards will expand to fill available space */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    padding: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
-.card h2 {
-    margin-bottom: 12px;
-    font-size: 2rem;
-    font-weight: 200;
+.chart-card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: normal;
 }
 
-.card-content {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.photos-card {
-    background-color: white;
-    border-radius: 10px;
-    padding: 16px;
-}
-
-.photos-grid {
-    display: flex;
-    gap: 10px;
-}
-
-.photos-card h2 {
-    font-weight: 200;
-    margin-bottom: .5rem;
-    line-height: 1.2;
-    font-size: 2rem;
-}
-
-.photo {
-    flex-grow: 1;
-    overflow: hidden;
-}
-
-.photo img {
+.chart-card img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     border-radius: 8px;
 }
 
-/* Add media queries to fine-tune layouts for different screen sizes */
-@media (min-width: 768px) {
-    .grid {
-        flex-direction: row;
-    }
-    .photos-grid {
-        flex-direction: row;
-    }
+.photos-container {
+    padding: 1rem;
 }
 
-img {
-    max-width: 100%;
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.photo-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.photo-card img {
+    width: 100%;
     height: auto;
+    display: block;
+}
+
+.photo-date {
+    padding: 0.5rem;
+    text-align: center;
+    color: #333333;
+}
+
+.btn-group {
+    display: none; /* Hide buttons on both mobile and desktop */
+}
+
+.bottom-nav {
+    display: none;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .dashboard-wrapper {
+        position: relative;
+        height: 100dvh;
+        overflow: hidden;
+        height: calc(100dvh - env(safe-area-inset-bottom, 0px));
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    main {
+        height: calc(100dvh - 60px - env(safe-area-inset-bottom, 0px));
+        overflow-y: auto;
+        padding-bottom: calc(60px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .charts-container {
+        display: none;
+        flex-direction: column;
+    }
+
+    .charts-container.active {
+        display: flex;
+    }
+
+    .photos-container {
+        display: none; /* Hide by default on mobile */
+    }
+
+    .photos-container.active {
+        display: block; /* Show when active on mobile */
+    }
+
+    .chart-card {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .photos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background-color: #ffffff;
+        box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    .nav-button {
+        flex: 1;
+        border: none;
+        background: none;
+        color: #444444;
+        font-family: inherit;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    .nav-button.active {
+        background-color: #f5f5f5;
+        color: #333333;
+        font-weight: 500;
+    }
 }
