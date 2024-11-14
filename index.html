@@ -3,72 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Monitoring Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <title> Justin Pauckert</title>
+    
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+<link rel="stylesheet" href="static/css/home.css">
+<link rel="shortcut icon" href="static/laptop.ico">
+
 </head>
 <body>
-    <div class="dashboard-wrapper">
-        <header>
-            <h1>Plant Monitoring Dashboard</h1>
-            <div class="btn-group">
-                <button class="btn" onclick="showSection('plots')">Plots</button>
-                <button class="btn" onclick="showSection('photos')">Photos</button>
-            </div>
-        </header>
-
-        <main>
-            <div id="plotsSection" class="charts-container active">
-                <div class="chart-card">
-                    <h2>Temperature</h2>
-                    <img src="img/temp.png" alt="Temperature Plot">
-                </div>
-                <div class="chart-card">
-                    <h2>Humidity</h2>
-                    <img src="img/humidity.png" alt="Humidity Plot">
-                </div>
-            </div>
-
-            <div id="photosSection" class="photos-container">
-                <div class="photos-grid">
-                    <div class="photo-card">
-                        <img src="img/chili1.png" alt="Chili Plant 1">
-                        <div class="photo-date">2024-03-15</div>
-                    </div>
-                    <div class="photo-card">
-                        <img src="img/chili2.png" alt="Chili Plant 2">
-                        <div class="photo-date">2024-03-14</div>
-                    </div>
-                    <div class="photo-card">
-                        <img src="img/chili3.png" alt="Chili Plant 3">
-                        <div class="photo-date">2024-03-13</div>
-                    </div>
-                </div>
-            </div>
-        </main>
-
-        <nav class="bottom-nav">
-            <button class="nav-button active" onclick="showSection('plots')">Plots</button>
-            <button class="nav-button" onclick="showSection('photos')">Photos</button>
-        </nav>
-    </div>
-
-    <script>
-        function showSection(section) {
-            // Hide all sections
-            document.querySelector('.charts-container').classList.remove('active');
-            document.querySelector('.photos-container').classList.remove('active');
+    <div class="container-fluid d-flex flex-column min-vh-100">
+        
+<div class="min-h-screen bg-gradient">
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <h1 class="title">Justin Pauckert</h1>
+            <p class="subtitle"> Quantum Engineer | Software Developer</p>
             
-            // Show selected section
-            if (section === 'plots') {
-                document.querySelector('.charts-container').classList.add('active');
-                document.querySelectorAll('.nav-button')[0].classList.add('active');
-                document.querySelectorAll('.nav-button')[1].classList.remove('active');
-            } else {
-                document.querySelector('.photos-container').classList.add('active');
-                document.querySelectorAll('.nav-button')[0].classList.remove('active');
-                document.querySelectorAll('.nav-button')[1].classList.add('active');
-            }
-        }
-    </script>
+            <!-- Social/Download Buttons -->
+            <div class="button-group">
+                <a href="/cv.pdf" class="btn btn-outline">
+                    Download CV
+                    <i class="fa fa-download icon"></i>
+                </a>
+                <a href="https://github.com/lpodl" class="btn btn-outline">
+                    GitHub
+                    <i class="fab fa-github icon"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/justin-pauckert/" class="btn btn-outline">
+                    LinkedIn
+                    <i class="fab fa-linkedin icon"></i>
+                </a>
+            </div>
+        </section>
+        
+        <section class="projects-section">
+            <div class="container">
+                <h2 class="mb-4">Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card plantmon">
+                        <h3>Plantmonitor - Dynamic</h3>
+                        <p>Website for monitoring plant health using AWS, Flask, and Nginx.</p>
+                        <img src="static/img/plantmon-dynamic.png" alt="Preview of Plantmonitor Dynamic">
+                        <div class="button-group">
+                            <a href="https://github.com/lpodl/plantmonitor" class="btn btn-primary">GitHub <i class="fab fa-github icon"></i></a>
+                            <a href="plantmonitor-dynamic" class="btn btn-primary">Live Demo <i class="fab fa-pagelines icon"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card plantmon">
+                        <h3>Plantmonitor - Static</h3>
+                        <p>Website for monitoring plant health using Github Actions and Docker.</p>
+                        <img src="static/img/WIP.png" alt="Preview of Project 2">
+                        <div class="button-group">
+                            <a href="https://github.com/lpodl/plantmonitor-static" class="btn btn-primary">GitHub <i class="fab fa-github icon"></i></a>
+                            <a href="https://lpodl.github.io/plantmonitor-static/" class="btn btn-primary">Live Demo <i class="fab fa-pagelines icon"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="project-card quantum">
+                        <h3>AutoQUBO</h3>
+                        <p>Translating problems for quantum computers using Python.</p>
+                        <img src="static/img/chimera-topology.png" alt="Preview of AutoQUBO">
+                        <a href="https://github.com/FujitsuResearch/autoqubo" class="btn btn-primary">GitHub <i class="fab fa-github icon"></i></a>
+                    </div>
+                    
+                    <div class="project-card js">
+                        <h3>Webcrawler</h3>
+                        <p> A webcrawler to check for dead links written in JavaScript. </p>
+                        <img src="static/img/webcrawler.png" alt="Preview of Project 4">
+                        <a href="https://github.com/lpodl/Webcrawler" class="btn btn-primary">GitHub <i class="fab fa-github icon"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
